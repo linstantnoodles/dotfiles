@@ -1,0 +1,12 @@
+# VAULT
+export VAULT_ADDR=https://vault.prod.2u.com:8200/
+export VAULT_CACERT=$HOME/.certs/vault-ca.pem
+
+# KUBE
+export KUBE_BIN_PATH=~/.kube/bin
+export PATH=$PATH:$KUBE_BIN_PATH;
+
+# GO
+export GOPATH="${HOME}/.go"
+export GOROOT="/usr/local/opt/go/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
