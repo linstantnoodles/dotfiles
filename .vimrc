@@ -21,6 +21,8 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2
 " deletes netrw's buffer once it's hidden (using ':q', for example)
 autocmd FileType netrw setl bufhidden=delete
 
+let @a="i```pythonjj}i```"
+
 " https://github.com/yous/dotfiles/blob/9070cd34b30f4fba6fa7a9de295c8560703ccc1e/vimrc
 let s:rg_common = 'rg --column --line-number --no-heading --color=always ' .
   \ '--smart-case '
@@ -105,7 +107,6 @@ syntax on
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'michaeljsmith/vim-indent-object'
