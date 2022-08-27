@@ -39,7 +39,7 @@ autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
-autocmd FileType vimwiki,markdown let b:coc_suggest_disable = 1
+autocmd FileType vimwiki,markdown,ruby let b:coc_suggest_disable = 1
 
 " theming
 syntax on
@@ -96,8 +96,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nore ; :
 nore , ;
 
-" set foldenable        
-" set foldmethod=syntax 
+" folding!
+set foldenable        
+set foldmethod=indent
 " make sure all folds are open on start
 set foldlevelstart=99 
 " space open/closes folds
@@ -132,6 +133,24 @@ function! NumberToggle()
 endfunc
 nnoremap <leader>l :call NumberToggle()<cr>
 
+" indent if we're at the beginning of a line. Else, do completion.
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col
+        return "\<tab>"
+    endif
+
+    let char = getline('.')[col - 1]
+    if char =~ '\k'
+        " There's an identifier before the cursor, so complete the identifier.
+        return "\<c-p>"
+    else
+        return "\<tab>"
+    endif
+endfunction
+inoremap <expr> <tab> InsertTabWrapper()
+inoremap <s-tab> <c-n>
+
 " leafgarland/typescript-vim
 let g:typescript_indent_disable = 1
 
@@ -153,6 +172,12 @@ let g:airline_theme='powerlineish'
 
 
 " junegunn/fzf.vim 
+let $FZF_DEFAULT_COMMAND='fd --type f -H -E .git'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --glob "!**/.git/**" --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
 nnoremap <leader>r :Rg<CR>
 nnoremap <leader>pw :Rg <C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>t :BTags<CR>
@@ -178,7 +203,6 @@ nnoremap <F4> :CmdResizeUp<cr>
 nnoremap <F5> :CmdResizeRight<cr>
 
 " vim-test
-
 nmap <silent> t<C-n> :TestNearest<CR>
 nmap <silent> t<C-a> :TestFile<CR>
 nmap <silent> t<C-s> :TestSuite<CR>
@@ -191,7 +215,25 @@ nmap <silent> t<C-g> :TestVisit<CR>
 let test#strategy = "dispatch"
 let test#ruby#rspec#executable='docker compose exec web bundle exec rspec'
 
+" emmet
+let g:user_emmet_settings = {
+\ 'javascript.jsx' : {
+    \ 'extends': 'jsx',
+    \ },
+\}
+
+" coc
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+let g:coc_disable_transparent_cursor = 1
+
 call plug#begin('~/.vim/plugged')
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'breuckelen/vim-resize'
 Plug 'dewyze/vim-ruby-block-helpers'
 Plug 'easymotion/vim-easymotion'
@@ -200,7 +242,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'leafgarland/typescript-vim'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -213,11 +254,11 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby'
 Plug 'vimwiki/vimwiki'
 Plug 'honza/vim-snippets'
 Plug 'vim-test/vim-test'
 Plug 'hashivim/vim-terraform'
 Plug 'Quramy/tsuquyomi'
+Plug 'mattn/emmet-vim'
 call plug#end()
 
