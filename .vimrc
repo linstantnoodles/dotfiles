@@ -39,7 +39,8 @@ autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
-autocmd FileType vimwiki,markdown,ruby let b:coc_suggest_disable = 1
+" Disable Coc suggestions by default, use manual trigger.
+autocmd BufEnter * let b:coc_suggest_disable = 1
 
 " theming
 syntax on
@@ -55,6 +56,7 @@ nnoremap K :tabnext<CR>
 
 " directory change
 nnoremap <leader>cd :cd %:p:h<CR>
+
 " set working directory to git project root
 " or directory of current file if not git project
 function! SetProjectRoot()
@@ -77,6 +79,34 @@ autocmd CursorMoved silent *
   \ if &filetype == 'netrw' |
   \   call SetProjectRoot() |
   \ endif
+
+" Project switching
+set viminfo+=!
+if !exists('g:PROJECTS')
+  let g:PROJECTS = {}
+endif
+
+augroup project_discovery
+  autocmd!
+  autocmd User Fugitive let g:PROJECTS[fnamemodify(fugitive#repo().dir(), ':h')] = 1
+augroup END
+
+command! -complete=customlist,s:project_complete -nargs=1 Project cd <args>
+
+function! s:project_complete(lead, cmdline, _) abort
+  let results = keys(get(g:, 'PROJECTS', {}))
+
+  " use projectionist if available
+  if exists('*projectionist#completion_filter')
+    return projectionist#completion_filter(results, a:lead, '/')
+  endif
+
+  " fallback to cheap fuzzy matching
+  let regex = substitute(a:lead, '.', '[&].*', 'g')
+  return filter(results, 'v:val =~ regex')
+endfunction
+
+nmap <Leader>pp :Project<Space>
 
 " custom mappings
 imap jj <Esc>
@@ -169,7 +199,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 " vim-airline/vim-airline
 let g:airline_theme='powerlineish'
-
+let g:airline_section_c='%F'
 
 " junegunn/fzf.vim 
 let $FZF_DEFAULT_COMMAND='fd --type f -H -E .git'
@@ -229,14 +259,35 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
+nmap <C-]> <Plug>(coc-definition)
+inoremap <silent><expr> <C-k> coc#refresh()
 let g:coc_disable_transparent_cursor = 1
+
+" list and select buffer
+nnoremap <silent> <leader>bb :ToggleBufExplorer<CR>
+" toggle buffer (switch between current and last buffer)
+nnoremap <silent> <leader>t <C-^>
+" go to next buffer
+nnoremap <silent> <leader>bn :bn<CR>
+" go to previous buffer
+nnoremap <silent> <leader>bp :bp<CR>
+" close buffer
+nnoremap <silent> <leader>bd :bd<CR>
+" kill buffer
+nnoremap <silent> <leader>bk :bd!<CR>
+" list buffers
+nnoremap <silent> <leader>bl :ls<CR>
+let g:bufExplorerDefaultHelp=0       " Do not show default help.
+let g:bufExplorerDetailedHelp=0      " Do not show detailed help.
+let g:bufExplorerShowRelativePath=0  " Show absolute paths.
+let g:bufExplorerSortBy='mru'        " Sort by most recently used.
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'breuckelen/vim-resize'
 Plug 'dewyze/vim-ruby-block-helpers'
-Plug 'easymotion/vim-easymotion'
+" Plug 'easymotion/vim-easymotion'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -252,13 +303,18 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-projectionist'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vimwiki/vimwiki'
-Plug 'honza/vim-snippets'
 Plug 'vim-test/vim-test'
+" Plug 'rafamadriz/friendly-snippets'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hashivim/vim-terraform'
 Plug 'Quramy/tsuquyomi'
 Plug 'mattn/emmet-vim'
+Plug 'airblade/vim-rooter'
+" Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
