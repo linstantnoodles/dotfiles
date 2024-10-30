@@ -39,14 +39,19 @@ autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+augroup twig_ft
+  au!
+  autocmd BufNewFile,BufRead *.Tiltfile   set syntax=starlark
+augroup END
 " Disable Coc suggestions by default, use manual trigger.
 autocmd BufEnter * let b:coc_suggest_disable = 1
 
 " theming
 syntax on
 colorscheme everforest
+
 " basic theme for wiki files
-autocmd BufEnter *.wiki colorscheme default
+" autocmd BufEnter *.wiki colorscheme default
 
 " tab creation and navigation
 nnoremap <C-t> :tabnew<CR>
@@ -55,32 +60,34 @@ nnoremap J :tabprev<CR>
 nnoremap K :tabnext<CR>
 
 " directory change
-nnoremap <leader>cd :cd %:p:h<CR>
+" nnoremap <leader>cd :cd %:p:h<CR>
+" nnoremap <leader>cd :cd /Users/alanlin/src<CR>
 
 " set working directory to git project root
 " or directory of current file if not git project
-function! SetProjectRoot()
-  " default to the current file's directory
-  lcd %:p:h
-  let git_dir = system("git rev-parse --show-toplevel")
-  " See if the command output starts with 'fatal' (if it does, not in a git repo)
-  let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
-  " if git project, change local directory to git project root
-  if empty(is_not_git_dir)
-    lcd `=git_dir`
-  endif
-endfunction
-" follow symlink and set working directory
-autocmd BufRead *
-  \ call SetProjectRoot()
-" netrw: follow symlink and set working directory
-autocmd CursorMoved silent *
-  " short circuit for non-netrw files
-  \ if &filetype == 'netrw' |
-  \   call SetProjectRoot() |
-  \ endif
+" function! SetProjectRoot()
+"   " default to the current file's directory
+"   lcd %:p:h
+"   let git_dir = system("git rev-parse --show-toplevel")
+"   " See if the command output starts with 'fatal' (if it does, not in a git repo)
+"   let is_not_git_dir = matchstr(git_dir, '^fatal:.*')
+"   " if git project, change local directory to git project root
+"   if empty(is_not_git_dir)
+"     lcd `=git_dir`
+"   endif
+" endfunction
+" " follow symlink and set working directory
+" autocmd BufRead *
+"   \ call SetProjectRoot()
+" " netrw: follow symlink and set working directory
+" autocmd CursorMoved silent *
+"   " short circuit for non-netrw files
+"   \ if &filetype == 'netrw' |
+"   \   call SetProjectRoot() |
+"   \ endif
 
 " Project switching
+" note: dont think im using this anymore..
 set viminfo+=!
 if !exists('g:PROJECTS')
   let g:PROJECTS = {}
@@ -109,30 +116,41 @@ endfunction
 nmap <Leader>pp :Project<Space>
 
 " custom mappings
-imap jj <Esc>
+
+" switch between normal and insert mode
+imap fj <Esc>
+
 " move vertically by visual line
 nnoremap j gj
 nnoremap k gk
+
+" splits and split navigation
 nnoremap <leader>v :vsplit<CR>
 nnoremap <leader>h :split<CR>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" list all buffers
 nnoremap <leader>ls :ls<cr>:b<space>
+
 " quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" enter command mode quickly
 nore ; :
+" since ; was previous find in lin
 nore , ;
 
 " folding!
-set foldenable        
+set foldenable
 set foldmethod=indent
 " make sure all folds are open on start
 set foldlevelstart=99 
 " space open/closes folds
-nnoremap <space> za
+" nnoremap <space> za
 
 " prebuilt macros
 let @a="i```pythonjj}i```"
@@ -149,7 +167,8 @@ let g:netrw_liststyle=3
 autocmd FileType netrw setl bufhidden=delete
 
 " toggle netrw
-nnoremap <silent> ,e :Lexplore<cr>
+" testing out nerdtree again
+" nnoremap <silent> ,e :Lexplore<cr>
 
 " function for toggling line numbers for copying
 function! NumberToggle()
@@ -222,6 +241,12 @@ let g:fzf_action = {
 " default to hidden and allow toggle
 let g:fzf_preview_window = ['up:40%:hidden', 'ctrl-/']
 
+" fzf project switching
+nnoremap <silent> <leader>fb :Buffers<CR>
+let project_dir = "~/src/cc"
+let project_list_cmd = "find " . project_dir . " -maxdepth 1 -type d -print"
+command! -bang ProjectFiles call fzf#run({'source': project_list_cmd, 'sink': 'e', 'left': '40%'})
+nnoremap <silent> <leader>fp :ProjectFiles<CR>
 
 " brecklen/vim-resize
 " override with custom mappings
@@ -257,7 +282,9 @@ let g:user_emmet_settings = {
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gr <Plug>(coc-references)
+" nmap <silent> gr :CocCommand references -s<CR>
+nnoremap <silent><leader>gr :<C-u>call CocAction('jumpReferences', 'vsplit')<CR>
 nmap <leader>rn <Plug>(coc-rename)
 nmap <C-]> <Plug>(coc-definition)
 inoremap <silent><expr> <C-k> coc#refresh()
@@ -281,6 +308,12 @@ let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerDetailedHelp=0      " Do not show detailed help.
 let g:bufExplorerShowRelativePath=0  " Show absolute paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
+
+" nerdtree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-s> :NERDTreeFind<CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -312,9 +345,11 @@ Plug 'vim-test/vim-test'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'hashivim/vim-terraform'
+Plug 'preservim/nerdtree'
 Plug 'Quramy/tsuquyomi'
 Plug 'mattn/emmet-vim'
 Plug 'airblade/vim-rooter'
+Plug 'cappyzawa/starlark.vim'
 " Plug 'fholgado/minibufexpl.vim'
 call plug#end()
 
