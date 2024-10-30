@@ -13,9 +13,6 @@ else
     echo "Brew is already installed"
 fi
 
-install() {
-}
-
 brew list 1password || brew install --cask 1password
 brew list iterm2 || brew install --cask iterm2
 brew list alfred || brew install --cask alfred
@@ -25,7 +22,9 @@ brew list rectangle || brew install --cask rectangle
 brew list nvm || brew install nvm
 brew list tmux || brew install tmux
 brew list docker || brew install --cask docker
-brew list anki || install --cask anki
+brew list anki || brew install --cask anki
+brew list fd || brew install fd
+brew list rg || brew install rg
 
 echo "Installing oh my zsh"
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
