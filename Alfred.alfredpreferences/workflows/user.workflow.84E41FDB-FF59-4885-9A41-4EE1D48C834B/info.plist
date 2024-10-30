@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.alfredapp.vero.gettingstarted.chaining</string>
+	<key>connections</key>
+	<dict>
+		<key>22D1306F-6D18-4076-9D8A-3412F1597AD2</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DE6AB282-FD9B-42AB-BE99-586EF56893C4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>855382D6-B609-4671-A264-206DDC328F06</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>5F201847-59D7-4F09-AFDE-467BB2FA313A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A9341E6A-3CDB-429D-9D79-5A18469ED041</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>22D1306F-6D18-4076-9D8A-3412F1597AD2</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C91BFB6F-2765-436B-AE0B-50F74B727484</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A9341E6A-3CDB-429D-9D79-5A18469ED041</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>DE6AB282-FD9B-42AB-BE99-586EF56893C4</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>855382D6-B609-4671-A264-206DDC328F06</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>F8A88D1A-333F-4832-9A05-AD68798EF018</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C91BFB6F-2765-436B-AE0B-50F74B727484</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<true/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vero Pepperrell</string>
+	<key>description</key>
+	<string>Learn how to chain inputs and prevent Alfred from closing between inputs</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Chaining Inputs - Getting Started</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>2show</string>
+				<key>subtext</key>
+				<string>'{query}' will be the second argument shown on screen</string>
+				<key>text</key>
+				<string>Type in your second argument</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>A9341E6A-3CDB-429D-9D79-5A18469ED041</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>show</string>
+				<key>subtext</key>
+				<string>Start with '{query}' as first argument</string>
+				<key>text</key>
+				<string>Show two arguments in Large Type</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>F8A88D1A-333F-4832-9A05-AD68798EF018</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>second</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>22D1306F-6D18-4076-9D8A-3412F1597AD2</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argument</key>
+				<string></string>
+				<key>variables</key>
+				<dict>
+					<key>first</key>
+					<string>{query}</string>
+				</dict>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.argument</string>
+			<key>uid</key>
+			<string>C91BFB6F-2765-436B-AE0B-50F74B727484</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>largetypetext</key>
+				<string>{var:first}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>DE6AB282-FD9B-42AB-BE99-586EF56893C4</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>largetypetext</key>
+				<string>{var:second}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>5F201847-59D7-4F09-AFDE-467BB2FA313A</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>seconds</key>
+				<string>1</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.delay</string>
+			<key>uid</key>
+			<string>855382D6-B609-4671-A264-206DDC328F06</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>This workflow shows you how simply you can chain inputs to take in multiple arguments, and how to avoid Alfred flickering or hiding between inputs.
+
+Type the keyword "show" followed by the first argument you want to show in Large Type, and press Return. Then type a second argument and press Return. 
+
+You'll see the first argument appear in Large Type, a delay of a second, then the second argument will replace it. Clever!
+
+Connection configuration:
+The connection between the first input and the first blue Arg and Vars object appears with a square. Double-click to see the configuration for the connection; you will see that the "Window Behaviour" checkbox has been ticked. This ensures that Alfred's window won't close after the first input.</string>
+	<key>uidata</key>
+	<dict>
+		<key>22D1306F-6D18-4076-9D8A-3412F1597AD2</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>6. Store the second argument as a variable.</string>
+			<key>xpos</key>
+			<integer>510</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
+		<key>5F201847-59D7-4F09-AFDE-467BB2FA313A</key>
+		<dict>
+			<key>note</key>
+			<string>9. Finally, the second Large Type outputs the second variable.</string>
+			<key>xpos</key>
+			<integer>660</integer>
+			<key>ypos</key>
+			<integer>330</integer>
+		</dict>
+		<key>855382D6-B609-4671-A264-206DDC328F06</key>
+		<dict>
+			<key>note</key>
+			<string>8. The Delay utility waits 1 second before proceeding to the next object.</string>
+			<key>xpos</key>
+			<integer>560</integer>
+			<key>ypos</key>
+			<integer>360</integer>
+		</dict>
+		<key>A9341E6A-3CDB-429D-9D79-5A18469ED041</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>6</integer>
+			<key>note</key>
+			<string>5. Type your second argument.</string>
+			<key>xpos</key>
+			<integer>340</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+		<key>C91BFB6F-2765-436B-AE0B-50F74B727484</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>note</key>
+			<string>4. Store the first query in a variable.</string>
+			<key>xpos</key>
+			<integer>220</integer>
+			<key>ypos</key>
+			<integer>80</integer>
+		</dict>
+		<key>DE6AB282-FD9B-42AB-BE99-586EF56893C4</key>
+		<dict>
+			<key>note</key>
+			<string>7. This Large Type utility displays the first variable.</string>
+			<key>xpos</key>
+			<integer>380</integer>
+			<key>ypos</key>
+			<integer>330</integer>
+		</dict>
+		<key>F8A88D1A-333F-4832-9A05-AD68798EF018</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>2</integer>
+			<key>note</key>
+			<string>1. Set your first keyword.
+
+2. Connect to your next object. A circle will appear on the connection between the two objects. Double-click it to reveal the connection settings.
+
+3. Tick the "Don't close Alfred" checkbox and save. The connection circle will become a square to indicate that Alfred stays visible without a flicker between your first and second input.</string>
+			<key>xpos</key>
+			<integer>50</integer>
+			<key>ypos</key>
+			<integer>50</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://www.alfredapp.com</string>
+</dict>
+</plist>

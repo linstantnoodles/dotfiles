@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "cd \/app\/codecademy\/current && bundle exec rails console",
+    "uid" : "066C1275-DEF6-448B-9896-B647105D731E",
+    "name" : "",
+    "keyword" : "cc_console"
+  }
+}

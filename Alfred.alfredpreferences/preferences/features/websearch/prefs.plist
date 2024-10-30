@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>08F549C0-9AA9-4C9A-B77D-85CF276D7947</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>jira</string>
+			<key>text</key>
+			<string>CORE Sprint Board (My Tickets Only / Column View)</string>
+			<key>url</key>
+			<string>https://skillsoftdev.atlassian.net/jira/software/c/projects/CORE/boards/732</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>0CE2910E-46BF-4A16-A13F-9D7D2E0F8756</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>jira dash</string>
+			<key>text</key>
+			<string>JIRA Dashboard</string>
+			<key>url</key>
+			<string>https://codecademy.atlassian.net/jira/dashboards/10834</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>15060562-556A-4021-B6B0-A4BDBB330FBA</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>rollout</string>
+			<key>text</key>
+			<string>Rollout Feature Flagging</string>
+			<key>url</key>
+			<string>https://www.notion.so/codecademy/Feature-Flagging-with-Rollout-86031ec55dcc4c96a22e3cb807e378e0</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>1D54F8AC-56CB-43C0-9908-9AF65B1E2010</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>onelogin</string>
+			<key>text</key>
+			<string>onelogin</string>
+			<key>url</key>
+			<string>https://myapplications.microsoft.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>26DA352A-F2D0-42CF-AD6F-FAE530D66A7C</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>nexus</string>
+			<key>text</key>
+			<string>Codecademy Nexus</string>
+			<key>url</key>
+			<string>https://nexus.codecademy.com/open?repos=content_service_v4,portal-app,Codecademy&amp;userName=linstantnoodles</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>2C6B70F1-701A-47C5-BFFE-1F97D1EF1349</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>sprint</string>
+			<key>text</key>
+			<string>Sprint Goals</string>
+			<key>url</key>
+			<string>https://www.notion.so/codecademy/ConPlat-Sprint-Goals-Results-01d71af50510405ea1adb965da5d1c58</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>3C20B250-2A61-4F9C-9C95-62B0C4F74E75</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>authorprod</string>
+			<key>text</key>
+			<string>Author Production</string>
+			<key>url</key>
+			<string>https://author.codecademy.com/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>660640DE-E683-4C42-9229-49D1C60169E4</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>guide-monolith-ssh</string>
+			<key>text</key>
+			<string>Monolith SSH Instructions</string>
+			<key>url</key>
+			<string>https://www.notion.so/codecademy/Infrastructure-Monolith-Onboarding-9d33fad1b33b424aa608cee69ea22a94#198623e7931d4c90803c0ce051300bb9</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>6669F74F-B3F8-4F96-9533-9D220E50C57E</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>calendar</string>
+			<key>text</key>
+			<string>Calendar Weekly</string>
+			<key>url</key>
+			<string>https://calendar.google.com/calendar/u/0/r/week</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>6F50A23B-6A31-45F6-9397-F79129352BF8</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>helpdesk</string>
+			<key>text</key>
+			<string>IT Helpdesk</string>
+			<key>url</key>
+			<string>https://codecademy.atlassian.net/jira/software/projects/IT/boards/139</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>7BAF88BE-2E2B-4395-B9F6-091B7554AE48</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>datadog error tracking</string>
+			<key>text</key>
+			<string>Backend Error Tracking [Datadog]</string>
+			<key>url</key>
+			<string>https://app.datadoghq.com/apm/error-tracking?query=source%3Aruby%20%40service%3Acodecademy-production&amp;eventSrc=trace-live-search&amp;start=1630429897104&amp;end=1630433497104&amp;paused=false</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>933639B7-3128-4578-9D69-F2A93BCC7F69</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>engnotion</string>
+			<key>text</key>
+			<string>Engineering Notion</string>
+			<key>url</key>
+			<string>https://www.notion.so/codecademy/Engineering-6e9cb55b6d1346618dc2f12fc7df4e41</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>9F9A85DB-4D30-4CBA-9816-DF0B15D85AB1</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>egg-jira</string>
+			<key>text</key>
+			<string>EGG Sprint Board</string>
+			<key>url</key>
+			<string>https://codecademy.atlassian.net/jira/software/projects/EGG/boards/142/</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>AA41B1B5-D0C4-4B25-9CD9-916ABC398A17</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>prs</string>
+			<key>text</key>
+			<string>Github Pull Requests</string>
+			<key>url</key>
+			<string>https://github.com/pulls?q=is%3Aopen+is%3Apr+author%3Alinstantnoodles+archived%3Afalse+user%3Acodecademy-engineering</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>C6CCD6ED-1A81-4F4C-91BB-23684874BB00</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gather</string>
+			<key>text</key>
+			<string>Gather Town</string>
+			<key>url</key>
+			<string>https://gather.town/app/rj5m5LXcwn87QsfZ/My%20Home%20Space</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>C764B8B7-56C1-4DFC-AB77-B1B8CF7F28B8</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>devops-jira</string>
+			<key>text</key>
+			<string>DevOps JIRA</string>
+			<key>url</key>
+			<string>https://codecademy.atlassian.net/jira/software/c/projects/DEVOPS/boards/98?selectedIssue=DEVOPS-3486</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>C8A56604-63CB-43A3-B9CA-ADD84524D52D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>guide-pr-env</string>
+			<key>text</key>
+			<string>Monolith PR Environment Instructions</string>
+			<key>url</key>
+			<string>https://github.com/codecademy-engineering/Codecademy#pr-environments-in-eks-elastic-kubernetes-service</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+		<key>EC15F4D0-A16A-40CA-BB23-34FB605F2A51</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>circle</string>
+			<key>text</key>
+			<string>CircleCI</string>
+			<key>url</key>
+			<string>https://app.circleci.com/pipelines/github/codecademy-engineering</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
